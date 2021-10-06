@@ -136,11 +136,10 @@ const Cart = ({ data }) => {
     const stripe = await getStripe();
     const { error } = await stripe.redirectToCheckout({
       mode: "payment",
-      //add shipping, try camelCase for client-side
+      //add shipping, try camelCase for client-side, remove shipping rates
       shippingAddressCollection: {
         allowedCountries: ['US']
       },
-      shippingRates: ["shr_1Jhe1fDvWLmlcH2U4AwRHPlV"],
       // need to pull in id's and match them with quantity and items from cart - use name to match
       // hard coded one
       lineItems: [...stripeConfiguredOrder],
